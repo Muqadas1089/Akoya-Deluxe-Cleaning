@@ -1014,7 +1014,7 @@ export default function Home() {
                           font-medium
                           shadow-md
                           max-md:hidden
-                          ${isArabic ? "right-[-62px]" : "left-[-32px]"}
+                          ${isArabic ? "right-[-32px]" : "left-[-32px]"}
                         `}
                       >
                         {item.number}
