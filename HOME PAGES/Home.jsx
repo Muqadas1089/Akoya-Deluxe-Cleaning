@@ -670,11 +670,15 @@ export default function Home() {
                 {perfume.price}
               </span>
 
+<Link to="/BookNow"
+ >
+
               <div className="flex justify-end pr-3 pb-4 mt-2">
                 <button className="border-2 h-[30px] w-[70px] rounded-2xl text-white bg-yellow-500 hover:bg-black transition duration-300">
                   {t("add")}
                 </button>
               </div>
+</Link>
             </motion.div>
           ))}
         </div>
