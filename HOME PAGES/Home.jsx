@@ -445,9 +445,14 @@ export default function Home() {
                 {t("platinumDescription")}
               </p>
 
-              <button className="h-[30px] w-[100px] bg-yellow-500 hover:bg-black hover:text-yellow-500 text-sm rounded-xl mt-[10px] ml-[20px]">
+              <Link to="/Service" >
+
+                            <button className="h-[30px] w-[100px] bg-yellow-500 hover:bg-black hover:text-yellow-500 text-sm rounded-xl mt-[10px] ml-[20px]">
                 {t("discover")}
               </button>
+              </Link>
+
+
             </div>
           </div>
 
@@ -477,9 +482,11 @@ export default function Home() {
                 {t("platinumDescription")}
               </p>
 
+<Link to="/Service">
               <button className="h-[30px] w-[100px] bg-yellow-500 hover:bg-black hover:text-yellow-500 text-sm rounded-xl mt-[10px] ml-[20px]">
                 {t("discover")}
               </button>
+</Link>
             </div>
           </div>
         </div>
@@ -489,7 +496,7 @@ export default function Home() {
             to="/Service"
             className="h-[45px] w-[200px] border-2 rounded-3xl hover:bg-black hover:text-white transition duration-300 flex items-center justify-center"
           >
-            {t("viewAllCollection")} →
+            {t("viewAllCollection")} 
           </Link>
         </div>
       </motion.section>
