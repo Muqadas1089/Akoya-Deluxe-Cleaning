@@ -107,7 +107,7 @@ const Chatbot = () => {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open Akoya chatbot"
-          className="fixed bottom-7 right-7 z-[9999] flex h-[75px] w-[75px] items-center justify-center rounded-full bg-white shadow-xl transition duration-300 hover:scale-110"
+          className="fixed bottom-7 right-7 z-[9999] flex h-[75px] w-[75px] max-[480px]:bottom-5 max-[480px]:right-5 max-[480px]:h-[65px] max-[480px]:w-[65px] items-center justify-center rounded-full bg-white shadow-xl transition duration-300 hover:scale-110"
         >
           <img
             src={logo}
@@ -119,15 +119,15 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-7 right-7 z-[9999] flex h-[570px] max-h-[calc(100dvh-40px)] w-[390px] max-w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[25px] border border-gray-200 bg-white shadow-2xl">
+        <div className="fixed bottom-7 right-7 z-[9999] flex h-[570px] max-h-[calc(100dvh-40px)] w-[390px] max-w-[calc(100vw-24px)] max-[480px]:bottom-3 max-[480px]:right-3 max-[480px]:h-[calc(100dvh-24px)] max-[480px]:max-h-[calc(100dvh-24px)] max-[480px]:w-[calc(100vw-24px)] flex-col overflow-hidden rounded-[25px] border border-gray-200 bg-white shadow-2xl">
 
           {/* Header */}
-          <div className="flex min-h-[95px] items-center justify-between gap-2 border-b border-gray-200 bg-[#fafafa] px-5 py-4">
+          <div className="flex min-h-[95px] items-center justify-between gap-2 border-b border-gray-200 bg-[#fafafa] px-5 py-4 max-[480px]:px-4">
 
             <div className="flex min-w-0 items-center gap-3">
 
               {/* Logo */}
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm max-[480px]:h-10 max-[480px]:w-10">
                 <img
                   src={logo}
                   alt="Akoya Logo"
@@ -136,11 +136,11 @@ const Chatbot = () => {
               </div>
 
               <div className="min-w-0">
-                <h2 className="text-lg font-semibold text-[#292929]">
+                <h2 className="text-lg font-semibold text-[#292929] max-[480px]:text-base">
                   Akoya Chatbot
                 </h2>
 
-                <p className="truncate text-sm text-gray-500">
+                <p className="truncate text-sm text-gray-500 max-[480px]:text-xs">
                   Akoya's concierge garment services
                 </p>
               </div>
@@ -185,7 +185,7 @@ const Chatbot = () => {
           </div>
 
           {/* Chat Messages */}
-          <div className="flex flex-1 flex-col gap-4 overflow-y-auto bg-white p-5">
+          <div className="flex flex-1 flex-col gap-4 overflow-y-auto bg-white p-5 max-[480px]:p-4">
 
             {messages.map((msg, index) => (
               <div
@@ -198,7 +198,7 @@ const Chatbot = () => {
               >
                 {/* Bot Avatar */}
                 {msg.sender === "bot" && (
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white shadow-sm max-[480px]:h-8 max-[480px]:w-8">
                     <img
                       src={logo}
                       alt="Akoya"
@@ -209,7 +209,7 @@ const Chatbot = () => {
 
                 {/* Message Bubble */}
                 <div
-                  className={`max-w-[82%] whitespace-pre-wrap break-words px-4 py-3 text-sm leading-6 ${
+                  className={`max-w-[82%] whitespace-pre-wrap break-words px-4 py-3 text-sm leading-6 max-[480px]:max-w-[85%] max-[480px]:px-3 max-[480px]:py-2.5 ${
                     msg.sender === "user"
                       ? "rounded-[20px] rounded-br-sm bg-[#bd9d2e] text-white"
                       : "rounded-[20px] rounded-bl-sm bg-[#f1f1f1] text-[#292929]"
@@ -224,7 +224,7 @@ const Chatbot = () => {
           {/* Message Input */}
           <form
             onSubmit={handleSend}
-            className="mx-4 mb-2 flex items-center rounded-full border border-gray-200 bg-[#fafafa] px-4"
+            className="mx-4 mb-2 flex items-center rounded-full border border-gray-200 bg-[#fafafa] px-4 max-[480px]:mx-3 max-[480px]:px-3"
           >
             <input
               type="text"

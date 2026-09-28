@@ -17,11 +17,12 @@ const Footer = () => {
     const { t } = useTranslation();
     return (
         <div>
-            <section className='mt-0 h-[530px] w-full bg-black'>
+            <section className='mt-0 min-h-[530px] w-full bg-black pb-6'>
 
-                <div className='flex justify-center gap-[80px]'>
+                <div className='flex justify-center gap-[80px] max-[1100px]:flex-wrap max-[1100px]:gap-[50px] max-[700px]:flex-col max-[700px]:items-start max-[700px]:px-8'>
+
                     {/* LOGO / ABOUT */}
-                    <motion.div className='pt-[130px] w-[250px] text-xs'
+                    <motion.div className='pt-[130px] w-[250px] text-xs max-[700px]:pt-[60px]'
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -52,7 +53,7 @@ const Footer = () => {
 
 
                     {/* OUR SERVICES */}
-                    <motion.div className='text-white pt-[120px] w-[220px] leading-loose'
+                    <motion.div className='text-white pt-[120px] w-[220px] leading-loose max-[700px]:pt-[20px]'
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7 }}>
@@ -107,7 +108,7 @@ const Footer = () => {
 
 
                     {/* CONTACT US */}
-                    <motion.div className='text-white pt-[120px] w-[250px]'
+                    <motion.div className='text-white pt-[120px] w-[250px] max-[700px]:pt-[20px]'
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9 }}>
@@ -125,22 +126,22 @@ const Footer = () => {
 
                                 <div className='flex flex-col gap-1 w-full'>
 
-                                    <div className='flex gap-[80px]'>
+                                    <div className='flex gap-[80px] max-[700px]:gap-[50px]'>
                                         <span>{t("area")}</span>
                                         <span>Al Wakrah</span>
                                     </div>
 
-                                    <div className='flex gap-[80px]'>
+                                    <div className='flex gap-[80px] max-[700px]:gap-[50px]'>
                                         <span>{t("zone")}</span>
                                         <span>90</span>
                                     </div>
 
-                                    <div className='flex gap-[80px]'>
+                                    <div className='flex gap-[80px] max-[700px]:gap-[50px]'>
                                         <span>{t("streetNo")}</span>
                                         <span>693</span>
                                     </div>
 
-                                    <div className='flex gap-[80px]'>
+                                    <div className='flex gap-[80px] max-[700px]:gap-[50px]'>
                                         <span>{t("buildingNo")}</span>
                                         <span>35</span>
                                     </div>
@@ -165,9 +166,9 @@ const Footer = () => {
 
 
                             {/* EMAIL */}
-                            <p className='flex items-center gap-2'>
+                            <p className='flex items-center gap-2 break-all'>
 
-                                <FaEnvelope className='text-yellow-500' />
+                                <FaEnvelope className='text-yellow-500 shrink-0' />
 
                                 info@akoyaluxurylaundry.com
 
@@ -179,7 +180,7 @@ const Footer = () => {
 
 
                     {/* NEWSLETTER */}
-                    <motion.div className='text-white pt-[120px] w-[220px] ml-[-80px]'
+                    <motion.div className='text-white pt-[120px] w-[220px] ml-[-80px] max-[1100px]:ml-0 max-[700px]:pt-[20px]'
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}>
@@ -192,30 +193,30 @@ const Footer = () => {
                             {t("newsletterDescription")}
                         </p>
 
-                        <input className='h-[50px] border-1 border-yellow-500 w-[260px] mt-[20px] bg-gray-800' type="email" placeholder={t("emailAddress")} />
+                        <input className='h-[50px] border-1 border-yellow-500 w-[260px] mt-[20px] bg-gray-800 max-[700px]:w-full' type="email" placeholder={t("emailAddress")} />
 
                         <button className='h-[50px] border-2 border-yellow-500 w-[260px] mt-[20px] bg-yellow-500 
-                    text-black hover:bg-yellow-400 hover:scale-[1.02] transition-transform duration-300 ease-ou1'>
+                    text-black hover:bg-yellow-400 hover:scale-[1.02] transition-transform duration-300 ease-ou1 max-[700px]:w-full'>
                             {t("subscribe")}
                         </button>
                     </motion.div>
                 </div>
 
                 <hr
-                    className='text-yellow-300 mt-[50px]' />
+                    className='text-yellow-300 mt-[50px] max-[700px]:mt-[40px]' />
 
                 <p
-                    className='text-gray-500 ml-[100px] mt-[20px] text-xs '> © 2025 AKOYA Luxury Laundry. {t("allRightsReserved")}</p>
+                    className='text-gray-500 ml-[100px] mt-[20px] text-xs max-[700px]:ml-8 '> © 2025 AKOYA Luxury Laundry. {t("allRightsReserved")}</p>
 
                 <div
-                    className='flex justify-center items-center text-gray-500 gap-4 text-xs ml-[950px]' >
+                    className='flex justify-center items-center text-gray-500 gap-4 text-xs ml-[950px] max-[1100px]:ml-0 max-[700px]:flex-wrap max-[700px]:justify-start max-[700px]:ml-8 max-[700px]:mr-8 max-[700px]:gap-x-4 max-[700px]:gap-y-2' >
                     <span className='hover:text-yellow-500'>{t("privacyPolicy")}</span>
                     <span className='hover:text-yellow-500'>{t("termsOfServices")}</span>
                     <span className='hover:text-yellow-500'>{t("sitemap")}</span>
                 </div>
 
                 <p
-                    className='text-gray-500 ml-[40%] text-xs '>{t("poweredBy")} <span className='text-yellow-500'> Nerou Technology Services</span> </p>
+                    className='text-gray-500 ml-[40%] text-xs max-[1100px]:ml-0 max-[1100px]:text-center max-[700px]:mt-4 max-[700px]:px-8 '>{t("poweredBy")} <span className='text-yellow-500'> Nerou Technology Services</span> </p>
 
             </section>
 
@@ -230,3 +231,4 @@ const Footer = () => {
 }
 
 export default Footer;
+

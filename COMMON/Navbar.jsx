@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import logo from "../src/assets/logo.png";
 import { useTranslation } from "react-i18next";
@@ -81,16 +80,16 @@ const Navbar = () => {
         <nav
           className="flex justify-around items-center backdrop-blur-md text-white
           h-[65px] w-full fixed top-0 left-0 right-0 z-50
-          bg-black/20 backdrop-blur-md shadow-lg"
+          bg-black/20 backdrop-blur-md shadow-lg px-3 sm:px-4"
         >
 
-  <Link to="/">
-  <img
-    src={logo}
-    alt="companylogo"
-    className="h-[38px] w-[90px] cursor-pointer"
-  />
-</Link>
+          <Link to="/" onClick={() => setmenueOpen(false)}>
+            <img
+              src={logo}
+              alt="companylogo"
+              className="h-[38px] w-[90px] cursor-pointer"
+            />
+          </Link>
 
           <div className="hidden lg:flex gap-9 text-xs font-medium">
 
@@ -166,11 +165,95 @@ const Navbar = () => {
           </div>
 
           <button
-            className="min-[1040px]:hidden text-3xl text-white"
+            className="lg:hidden text-3xl text-white"
             onClick={() => setmenueOpen(!menueOPen)}
           >
             <FaBars />
           </button>
+
+          {menueOPen && (
+            <div
+              className={`absolute top-[65px] ${
+                isArabic ? "right-0" : "left-0"
+              } w-full bg-black/90 backdrop-blur-md
+              flex flex-col items-center gap-5 py-6 lg:hidden`}
+            >
+
+              <Link
+                to="/"
+                onClick={() => setmenueOpen(false)}
+                className="text-xs font-medium hover:scale-110 transition duration-300"
+              >
+                {t("home").toUpperCase()}
+              </Link>
+
+              <Link
+                to="/Service"
+                onClick={() => setmenueOpen(false)}
+                className="text-xs font-medium hover:scale-110 transition duration-300"
+              >
+                {t("services").toUpperCase()}
+              </Link>
+
+              <Link
+                to="/About"
+                onClick={() => setmenueOpen(false)}
+                className="text-xs font-medium hover:scale-110 transition duration-300"
+              >
+                {t("about").toUpperCase()}
+              </Link>
+
+              <Link
+                to="/Vission"
+                onClick={() => setmenueOpen(false)}
+                className="text-xs font-medium hover:scale-110 transition duration-300"
+              >
+                {t("visionMission").toUpperCase()}
+              </Link>
+
+              <Link
+                to="/Contact"
+                onClick={() => setmenueOpen(false)}
+                className="text-xs font-medium hover:scale-110 transition duration-300"
+              >
+                {t("contact").toUpperCase()}
+              </Link>
+
+              <button
+                onClick={changeLanguage}
+                className="h-[38px] w-[80px] border-2 border-[#d4af37]
+                rounded-3xl text-white hover:scale-110 transition duration-300"
+              >
+                {i18n.language === "en" ? "العربية" : "English"}
+              </button>
+
+              <button
+                className="h-[40px] w-[140px] border-2 border-[#d4af37]
+                rounded-3xl hover:scale-110 transition duration-300
+                text-white text-xs font-medium whitespace-nowrap"
+                onClick={() => {
+                  setmenueOpen(false);
+                  setPage("login");
+                }}
+              >
+                {t("clientLogin")}
+              </button>
+
+              <Link
+                to={"/BookNow"}
+                onClick={() => setmenueOpen(false)}
+              >
+                <button
+                  className="h-[38px] w-[95px] border-2 border-[#d4af37]
+                  hover:scale-110 transition duration-300 rounded-3xl
+                  font-medium text-sm bg-[#d4af37]"
+                >
+                  {t("bookNow")}
+                </button>
+              </Link>
+
+            </div>
+          )}
 
         </nav>
       )}
@@ -179,12 +262,12 @@ const Navbar = () => {
 
         <div
           className="fixed inset-0 z-[100] min-h-screen w-full bg-[#f7f5f1]
-          flex justify-center items-center"
+          flex justify-center items-center px-4 py-5 overflow-y-auto"
         >
 
           <div
-            className="h-[570px] w-[450px] bg-white rounded-2xl
-            shadow-lg overflow-hidden"
+            className="h-[570px] w-[450px] max-w-full bg-white rounded-2xl
+            shadow-lg overflow-hidden shrink-0"
           >
 
             <div className="bg-[#1d1d1d] text-white h-[120px]">
@@ -376,12 +459,12 @@ const Navbar = () => {
 
         <div
           className="fixed inset-0 z-[100] min-h-screen w-full bg-[#f7f5f1]
-          flex justify-center items-center py-[30px]"
+          flex justify-center items-center py-[30px] px-4 overflow-y-auto"
         >
 
           <div
-            className="w-[520px] bg-white rounded-2xl
-            shadow-lg overflow-hidden"
+            className="w-[520px] max-w-full bg-white rounded-2xl
+            shadow-lg overflow-hidden shrink-0"
           >
 
             <div className="bg-[#1d1d1d] text-white h-[175px]">
@@ -493,11 +576,11 @@ const Navbar = () => {
 
         <div
           className="fixed inset-0 z-[100] h-screen w-full bg-[#f7f5f1]
-          flex justify-center items-center overflow-hidden"
+          flex justify-center items-center overflow-y-auto px-4 py-3"
         >
 
           <div
-            className="w-[500px] h-[95vh] bg-white rounded-2xl
+            className="w-[500px] max-w-full h-[95vh] bg-white rounded-2xl
             shadow-lg overflow-hidden"
           >
 
@@ -525,7 +608,7 @@ const Navbar = () => {
 
             </div>
 
-            <div className="px-[35px] pt-[18px] pb-[18px]">
+            <div className="px-[35px] pt-[18px] pb-[18px] overflow-y-auto h-[calc(95vh-120px)]">
 
               <label
                 className="text-[#26354d] font-semibold text-[14px]"
@@ -823,4 +906,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

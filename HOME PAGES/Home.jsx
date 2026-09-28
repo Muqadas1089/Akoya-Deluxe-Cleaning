@@ -184,7 +184,6 @@ export default function Home() {
         key={isArabic ? "arabic" : "english"}
         dir={isArabic ? "rtl" : "ltr"}
         cssMode={true}
-        navigation={true}
         pagination={true}
         mousewheel={true}
         keyboard={true}
@@ -202,11 +201,7 @@ export default function Home() {
           mySwiper
           w-full
 
-          [&_.swiper-button-prev:hover]:!bg-[#333333]
-          [&_.swiper-button-next:hover]:!bg-[#333333]
-
-          [&_.swiper-button-prev:hover]:!border-[#d4af37]
-          [&_.swiper-button-next:hover]:!border-[#d4af37]
+    
           [&_.swiper-pagination]:!bottom-[20px]
 
           [&_.swiper-pagination-bullet]:!w-[13px]
@@ -1019,7 +1014,7 @@ export default function Home() {
                           font-medium
                           shadow-md
                           max-md:hidden
-                          ${isArabic ? "right-[-62px]" : "left-[-62px]"}
+                          ${isArabic ? "right-[-62px]" : "left-[-32px]"}
                         `}
                       >
                         {item.number}

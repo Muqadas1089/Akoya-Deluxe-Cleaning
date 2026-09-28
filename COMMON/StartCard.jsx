@@ -42,7 +42,7 @@ const WelcomePopup = () => {
   }
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-[6px] px-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-[6px] px-4 py-4 overflow-hidden">
 
       {/* ================= POPUP CARD ================= */}
 
@@ -65,7 +65,7 @@ const WelcomePopup = () => {
           duration: 0.45,
           ease: "easeOut",
         }}
-        className="relative w-[550px] max-w-full min-h-[700px] bg-[#fffdf5] border-[2px] border-[#d4af37] rounded-[18px] shadow-2xl overflow-hidden max-md:min-h-[620px] max-sm:min-h-[560px] max-sm:rounded-[15px]"
+        className="relative w-[550px] max-w-full min-h-[700px] bg-[#fffdf5] border-[2px] border-[#d4af37] rounded-[18px] shadow-2xl overflow-hidden max-md:min-h-[620px] max-sm:min-h-[560px] max-sm:rounded-[15px] max-sm:w-full max-sm:max-h-[calc(100vh-32px)]"
       >
 
         {/* ================= DECORATIVE DOTS ================= */}
@@ -100,7 +100,7 @@ const WelcomePopup = () => {
 
         {/* ================= TOP LINE ================= */}
 
-        <div className="w-[70%] h-[1px] bg-[#eee6d1] mx-auto mt-[45px]"></div>
+        <div className="w-[70%] h-[1px] bg-[#eee6d1] mx-auto mt-[45px] max-sm:mt-[35px]"></div>
 
 
         {/* ================= IMAGE ================= */}
@@ -119,12 +119,12 @@ const WelcomePopup = () => {
             delay: 0.15,
             ease: "easeOut",
           }}
-          className="flex justify-center items-center mt-[25px] px-[40px] max-sm:px-[25px]"
+          className="flex justify-center items-center mt-[25px] px-[40px] max-sm:px-[20px] max-sm:mt-[20px]"
         >
           <img
             src={ramadanImage}
             alt="Ramadan Mubarak"
-            className="w-[330px] h-[300px] object-contain max-sm:w-[270px] max-sm:h-[240px]"
+            className="w-[330px] h-[300px] object-contain max-md:w-[300px] max-md:h-[270px] max-sm:w-[240px] max-sm:h-[210px]"
           />
         </motion.div>
 
@@ -144,7 +144,7 @@ const WelcomePopup = () => {
             duration: 0.5,
             delay: 0.3,
           }}
-          className="text-center text-[#d4a72c] text-[20px] font-medium mt-[5px] max-sm:text-[17px]"
+          className="text-center text-[#d4a72c] text-[20px] font-medium mt-[5px] max-sm:text-[17px] max-[400px]:text-[15px]"
         >
           ✨ Grandma Dana ✨ &nbsp; ✨ Jassim ✨
         </motion.p>
@@ -165,7 +165,7 @@ const WelcomePopup = () => {
             duration: 0.5,
             delay: 0.4,
           }}
-          className="text-center text-[#d4af37] text-[34px] font-bold mt-[35px] max-sm:text-[27px] max-sm:mt-[25px]"
+          className="text-center text-[#d4af37] text-[34px] font-bold mt-[35px] max-sm:text-[27px] max-sm:mt-[20px] max-[400px]:text-[24px]"
         >
           {t("welcomeDearGuests")}
         </motion.h2>
@@ -186,7 +186,7 @@ const WelcomePopup = () => {
             duration: 0.5,
             delay: 0.5,
           }}
-          className="text-center text-[#374151] text-[17px] leading-[1.7] px-[45px] mt-[15px] max-sm:text-[15px] max-sm:px-[25px]"
+          className="text-center text-[#374151] text-[17px] leading-[1.7] px-[45px] mt-[15px] max-sm:text-[15px] max-sm:px-[25px] max-[400px]:text-[14px] max-[400px]:px-[20px]"
         >
           {t("welcomeMessage1")}
           <br />
@@ -198,7 +198,7 @@ const WelcomePopup = () => {
 
         {/* ================= PROGRESS BAR ================= */}
 
-        <div className="px-[45px] mt-[32px] max-sm:px-[25px]">
+        <div className="px-[45px] mt-[32px] max-sm:px-[25px] max-sm:mt-[25px]">
 
           <div className="w-full h-[9px] bg-[#e5e7eb] rounded-full overflow-hidden">
 

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -307,12 +308,12 @@ const Service = () => {
                   duration: 0.8,
                   ease: "easeOut",
                 }}
-                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
+                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl max-[400px]:text-xl"
               >
                 {t("servicePage.hero.slide1.title")}
               </motion.p>
 
-              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
+              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap max-sm:text-xs">
 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
@@ -321,7 +322,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:mr-[7px]"
                 ></motion.p>
 
                 <motion.p
@@ -343,7 +344,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:ml-[7px]"
                 ></motion.p>
 
               </div>
@@ -356,7 +357,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base max-sm:w-[190px]"
                 >
                   {t("servicePage.bookCollection")}
                 </motion.button>
@@ -364,6 +365,7 @@ const Service = () => {
 
             </div>
           </SwiperSlide>
+
 
           {/* ================= SLIDE 2 ================= */}
 
@@ -385,12 +387,12 @@ const Service = () => {
                   duration: 0.8,
                   ease: "easeOut",
                 }}
-                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
+                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl max-[400px]:text-xl"
               >
                 {t("servicePage.hero.slide2.title")}
               </motion.p>
 
-              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
+              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap max-sm:text-xs">
 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
@@ -399,7 +401,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:mr-[7px]"
                 ></motion.p>
 
                 <motion.p
@@ -421,7 +423,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:ml-[7px]"
                 ></motion.p>
 
               </div>
@@ -434,7 +436,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base max-sm:w-[190px]"
                 >
                   {t("servicePage.bookCollection")}
                 </motion.button>
@@ -442,6 +444,7 @@ const Service = () => {
 
             </div>
           </SwiperSlide>
+
 
           {/* ================= SLIDE 3 ================= */}
 
@@ -463,12 +466,12 @@ const Service = () => {
                   duration: 0.8,
                   ease: "easeOut",
                 }}
-                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
+                className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl max-[400px]:text-xl"
               >
                 {t("servicePage.hero.slide3.title")}
               </motion.p>
 
-              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
+              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap max-sm:text-xs">
 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
@@ -477,7 +480,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:mr-[7px]"
                 ></motion.p>
 
                 <motion.p
@@ -499,7 +502,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400"
+                  className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400 max-sm:w-[25px] max-sm:ml-[7px]"
                 ></motion.p>
 
               </div>
@@ -512,7 +515,7 @@ const Service = () => {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base max-sm:w-[190px]"
                 >
                   {t("servicePage.bookCollection")}
                 </motion.button>
@@ -524,21 +527,22 @@ const Service = () => {
         </Swiper>
       </div>
 
+
       {/* ================= OUR SERVICES ================= */}
 
       <section className="bg-[#F8F5F2] w-full max-md:w-full max-md:ml-0 min-h-[700px] pb-[80px]">
 
         {/* ================= HEADING ================= */}
 
-        <p className="pt-[100px] text-3xl text-center pb-[20px]">
+        <p className="pt-[100px] text-3xl text-center pb-[20px] max-sm:pt-[70px] max-sm:text-2xl">
           {t("servicePage.ourServices")}
         </p>
 
-        <div className="flex justify-center gap-4 max-sm:gap-2">
+        <div className="flex justify-center gap-4 max-sm:gap-2 px-4">
 
           <p className="bg-yellow-500 h-[2px] w-[70px] mt-[13px] max-sm:w-[35px]"></p>
 
-          <p className="font-bold text-yellow-500">
+          <p className="font-bold text-yellow-500 text-center">
             {t("servicePage.luxuryGarmentCare")}
           </p>
 
@@ -546,15 +550,16 @@ const Service = () => {
 
         </div>
 
+
         {/* ================= CATEGORY BUTTONS ================= */}
 
-        <div className="flex justify-center flex-wrap mt-[50px] gap-4 px-[20px]">
+        <div className="flex justify-center flex-wrap mt-[50px] gap-4 px-[20px] max-sm:gap-2 max-sm:mt-[35px]">
 
           {categories.map((category, index) => (
             <button
               key={category}
               onClick={() => setSelected(index)}
-              className={`h-[40px] px-[22px] text-center rounded-2xl font-bold bg-white p-[5px] hover:bg-black hover:text-yellow-400 hover:scale-[1.04] transition-all ease-out duration-300 ${
+              className={`h-[40px] px-[22px] text-center rounded-2xl font-bold bg-white p-[5px] hover:bg-black hover:text-yellow-400 hover:scale-[1.04] transition-all ease-out duration-300 max-sm:px-[15px] max-sm:text-sm ${
                 Selected === index
                   ? "!bg-black !text-yellow-400"
                   : ""
@@ -566,11 +571,12 @@ const Service = () => {
 
         </div>
 
+
         {/* ================= SERVICES CARDS ================= */}
 
-        <div className="w-full mt-[50px] px-[25px] mr-[30px]">
+        <div className="w-full mt-[50px] px-[25px] mr-[30px] max-sm:px-[15px] max-sm:mr-0">
 
-          <div className="max-w-[1340px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[35px]">
+          <div className="max-w-[1340px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[35px] max-sm:gap-[25px]">
 
             {filteredProducts.map((product, index) => (
 
@@ -598,7 +604,7 @@ const Service = () => {
 
                 {/* ================= IMAGE ================= */}
 
-                <div className="relative w-full h-[380px] overflow-hidden group">
+                <div className="relative w-full h-[380px] overflow-hidden group max-sm:h-[300px]">
 
                   <img
                     src={product.image}
@@ -612,31 +618,33 @@ const Service = () => {
 
                   {/* EMOJI CIRCLE */}
 
-                  <div className="absolute top-[18px] right-[20px] w-[52px] h-[52px] rounded-full bg-[#d9b52f] flex items-center justify-center text-[25px] shadow-md">
+                  <div className="absolute top-[18px] right-[20px] w-[52px] h-[52px] rounded-full bg-[#d9b52f] flex items-center justify-center text-[25px] shadow-md max-sm:w-[45px] max-sm:h-[45px] max-sm:text-[21px]">
                     {product.emoji}
                   </div>
 
                 </div>
 
+
                 {/* ================= CARD CONTENT ================= */}
 
-                <div className="px-[25px] pt-[25px] pb-[25px]">
+                <div className="px-[25px] pt-[25px] pb-[25px] max-sm:px-[18px] max-sm:pt-[20px] max-sm:pb-[20px]">
 
-                  <div className="flex justify-between items-center gap-3">
+                  <div className="flex justify-between items-center gap-3 max-sm:items-start">
 
-                    <h3 className="text-[22px] font-medium text-black">
+                    <h3 className="text-[22px] font-medium text-black max-sm:text-[18px]">
                       {t(`servicePage.products.${product.name}.name`)}
                     </h3>
 
-                    <p className="text-[#d4af37] text-[17px] font-medium whitespace-nowrap">
+                    <p className="text-[#d4af37] text-[17px] font-medium whitespace-nowrap max-sm:text-[14px]">
                       {t("servicePage.from")} {product.price}
                     </p>
 
                   </div>
 
-                  <p className="text-[16px] text-gray-700 leading-[1.6] mt-[15px] min-h-[55px]">
+                  <p className="text-[16px] text-gray-700 leading-[1.6] mt-[15px] min-h-[55px] max-sm:text-[14px]">
                     {t(`servicePage.products.${product.name}.description`)}
                   </p>
+
 
                   {/* ================= YELLOW ANIMATED LINE ================= */}
 
@@ -661,10 +669,11 @@ const Service = () => {
 
                   </div>
 
+
                   {/* ================= ORDER BUTTON ================= */}
 
                   <Link to="/BookNow">
-                    <button className="w-full h-[48px] mt-[18px] bg-[#d4af37] text-black rounded-[9px] text-[16px] font-medium hover:bg-black hover:text-yellow-400 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-[8px]">
+                    <button className="w-full h-[48px] mt-[18px] bg-[#d4af37] text-black rounded-[9px] text-[16px] font-medium hover:bg-black hover:text-yellow-400 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-[8px] max-sm:text-[14px]">
                       {t("servicePage.order")}
                       <span className="text-[22px]">
                         ＋
@@ -684,13 +693,14 @@ const Service = () => {
 
       </section>
 
+
       <div>
 
         {/* ================= PERSONALIZED SERVICE SECTION ================= */}
 
         <section className="w-full border-b-2 border-b-white max-md:w-full max-md:ml-0 bg-[#1c1c1c] min-h-[350px] flex items-center justify-center overflow-hidden">
 
-          <div className="w-full text-center px-[30px] py-[80px]">
+          <div className="w-full text-center px-[30px] py-[80px] max-sm:px-[20px] max-sm:py-[60px]">
 
             {/* Heading */}
 
@@ -702,10 +712,11 @@ const Service = () => {
                 duration: 0.7,
                 ease: "easeOut",
               }}
-              className="text-[#d4af37] text-3xl md:text-4xl font-light"
+              className="text-[#d4af37] text-3xl md:text-4xl font-light max-sm:text-2xl"
             >
               {t("servicePage.personalizedService.title")}
             </motion.h2>
+
 
             {/* Paragraph */}
 
@@ -718,10 +729,11 @@ const Service = () => {
                 delay: 0.15,
                 ease: "easeOut",
               }}
-              className="text-white/90 text-base md:text-lg mt-[25px] max-w-[1050px] mx-auto leading-[1.8]"
+              className="text-white/90 text-base md:text-lg mt-[25px] max-w-[1050px] mx-auto leading-[1.8] max-sm:text-sm"
             >
               {t("servicePage.personalizedService.description")}
             </motion.p>
+
 
             {/* Button */}
 
@@ -750,6 +762,8 @@ const Service = () => {
                   ease-out
                   hover:scale-[1.04]
                   hover:bg-[#e2bf45]
+                  max-sm:w-[220px]
+                  max-sm:text-[14px]
                 "
               >
                 {t("servicePage.personalizedService.contactConcierge")}
@@ -767,3 +781,4 @@ const Service = () => {
 };
 
 export default Service;
+
