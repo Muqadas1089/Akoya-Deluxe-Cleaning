@@ -9,14 +9,20 @@ import About from "../HOME PAGES/About.jsx";
 import Vission from "../HOME PAGES/Vission.jsx";
 import Contact from "../HOME PAGES/Contact.jsx";
 import Service from "../HOME PAGES/Service.jsx";
+import i18n from "i18next";
+import Chatbot from "../COMMON/Chatbot.jsx";
 
 const App = () => {
+  const isArabic = i18n.language === "ar";
+
   return (
-    <div>
+    <div dir={isArabic ? "rtl" : "ltr"}>
 
 
       <BrowserRouter>
        <Navbar />
+
+       <Chatbot />
 
       <Routes>
         <Route path='/' element= {<Home />}/>

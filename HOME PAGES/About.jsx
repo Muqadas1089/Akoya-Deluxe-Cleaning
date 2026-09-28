@@ -1,6 +1,6 @@
-
 import React from 'react'
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import hero from "../src/assets/Abouthero.jpg";
 
 import { FaShieldAlt } from "react-icons/fa";
@@ -25,23 +25,27 @@ import {
 
 
 const About = () => {
-    
+
+    const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+    const isArabic = i18n.language === "ar";
+
 
     const Choose = [
         {
             icon: <FaShieldAlt />,
-            title: "Premium Quality",
-            des: "We use only the finest eco-friendly detergents and state-of-the-art equipment",
+            title: t("aboutPage.choose.premiumQuality.title"),
+            des: t("aboutPage.choose.premiumQuality.des"),
         },
         {
             icon: <FaUserCheck />,
-            title: "Personalized Service",
-            des: "Tailored solutions for each garment with our expert fabric specialists"
+            title: t("aboutPage.choose.personalizedService.title"),
+            des: t("aboutPage.choose.personalizedService.des")
         },
         {
             icon: <FaClock />,
-            title: "Convenience",
-            des: "24/7 booking with flexible pickup and delivery options",
+            title: t("aboutPage.choose.convenience.title"),
+            des: t("aboutPage.choose.convenience.des"),
         },
     ];
 
@@ -49,43 +53,43 @@ const About = () => {
     const Journey = [
         {
             icon: <FaShirt />,
-            title: "1. Select Wash Type",
-            des: "Standard or Express wash options to suit your needs",
+            title: t("aboutPage.journey.selectWashType.title"),
+            des: t("aboutPage.journey.selectWashType.des"),
         },
         {
             icon: <FaBoxOpen />,
-            title: "2. Choose Garments",
-            des: "From daily wear to delicate couture - we handle all",
+            title: t("aboutPage.journey.chooseGarments.title"),
+            des: t("aboutPage.journey.chooseGarments.des"),
         },
         {
             icon: <FaSprayCan />,
-            title: "3. Steam Finishing",
-            des: "Professional pressing for impeccable results",
+            title: t("aboutPage.journey.steamFinishing.title"),
+            des: t("aboutPage.journey.steamFinishing.des"),
         },
         {
             icon: <FaPumpSoap />,
-            title: "4. Fragrance Infusion",
-            des: "Luxury scents for men and women",
+            title: t("aboutPage.journey.fragranceInfusion.title"),
+            des: t("aboutPage.journey.fragranceInfusion.des"),
         },
         {
             icon: <FaBox />,
-            title: "5. Packaging",
-            des: "Choose from our premium wrapping options",
+            title: t("aboutPage.journey.packaging.title"),
+            des: t("aboutPage.journey.packaging.des"),
         },
         {
             icon: <FaGift />,
-            title: "6. Personalization",
-            des: "Add a custom card for gifts",
+            title: t("aboutPage.journey.personalization.title"),
+            des: t("aboutPage.journey.personalization.des"),
         },
         {
             icon: <FaWhatsapp />,
-            title: "7. WhatsApp Checkout",
-            des: "Easy confirmation via WhatsApp",
+            title: t("aboutPage.journey.whatsappCheckout.title"),
+            des: t("aboutPage.journey.whatsappCheckout.des"),
         },
         {
             icon: <FaRobot />,
-            title: "8. AI Assistance",
-            des: "3D avatars guide you in Arabic & English",
+            title: t("aboutPage.journey.aiAssistance.title"),
+            des: t("aboutPage.journey.aiAssistance.des"),
         },
     ];
 
@@ -93,60 +97,58 @@ const About = () => {
     const Special = [
         {
             image: tester1,
-            name: "Ahmed Al-Mansoori",
-            post: "Head of Couture Care",
-            des: "20+ years in luxury garment care",
+            name: t("aboutPage.specialists.ahmed.name"),
+            post: t("aboutPage.specialists.ahmed.post"),
+            des: t("aboutPage.specialists.ahmed.des"),
         },
         {
             image: tester2,
-            name: "Layla Hassan",
-            post: "Fabric Technology Expert",
-            des: "Fabric scientist and preservation expert",
+            name: t("aboutPage.specialists.layla.name"),
+            post: t("aboutPage.specialists.layla.post"),
+            des: t("aboutPage.specialists.layla.des"),
         },
         {
             image: tester3,
-            name: "Yousef Ibrahim",
-            post: "Operations Director",
-            des: "Ensuring seamless service delivery",
+            name: t("aboutPage.specialists.yousef.name"),
+            post: t("aboutPage.specialists.yousef.post"),
+            des: t("aboutPage.specialists.yousef.des"),
         },
     ];
 
 
     return (
-        <div>
+        <div dir={isArabic ? "rtl" : "ltr"}>
 
             <section>
 
                 <div className="relative">
 
                     <img
-                        className="
+                        className={`
                         relative
-                        w-[94%]
-                        ml-[3%]
+                        w-full
                         h-[600px]
                         sm:h-[600px]  object-cover mb-[40px]
-                        "
+                        `}
                         src={hero}
                         alt=""
                     />
 
                     <div
-                        className="
+                        className={`
                         absolute
                         top-0
-                        left-[3%]
                         bg-black/45
                         h-[600px]
-                        w-[94%]
-                        "
+                        w-full
+                        `}
                     ></div>
 
 
                     <motion.p
                     initial={{opacity:0, y:50}}
-                 whileInView={{opacity:1, y:0}}
-                   viewport={{ once: true }}
+                    whileInView={{opacity:1, y:0}}
+                    viewport={{ once: true }}
                     transition={{duration:0.8,
                         ease:"easeOut"
                     }}
@@ -163,7 +165,7 @@ const About = () => {
                         whitespace-nowrap
                         "
                     >
-                        Luxury Laundry. Reimagined.
+                        {t("aboutPage.hero.title")}
                     </motion.p>
 
 
@@ -186,17 +188,17 @@ const About = () => {
 
                         <motion.p
                           initial={{opacity:0, y:30}}
-                     whileInView={{opacity:1, y:0}}
-                       viewport={{ once: true }}
-                        transition={{duration:0.8,
+                          whileInView={{opacity:1, y:0}}
+                          viewport={{ once: true }}
+                          transition={{duration:0.8,
                             ease:"easeOut"}}
-                        className="h-[2px] mr-[10px] mt-[30px] sm:mr-[15px] w-[40px] sm:w-[70px] bg-yellow-400"></motion.p>
+                        className={`h-[2px] ${isArabic ? "ml-[10px] sm:ml-[15px]" : "mr-[10px] sm:mr-[15px]"} mt-[30px] w-[40px] sm:w-[70px] bg-yellow-400`}
+                        ></motion.p>
 
                         <motion.p
                         initial={{opacity:0, y:50}}
-                         whileInView={{opacity:1, y:0}}
-                           viewport={{ once: true }}
-
+                        whileInView={{opacity:1, y:0}}
+                        viewport={{ once: true }}
                         transition={{duration:0.8,
                             ease:"easeOut"
                         }}
@@ -207,12 +209,12 @@ const About = () => {
                         <motion.p
                         initial={{opacity:0, y:30}}
                         whileInView={{opacity:1, y:0}}
-                          viewport={{ once: true }}
-
+                        viewport={{ once: true }}
                         transition={{duration:0.8,
                             ease:"easeOut"
                         }}
-                        className="h-[2px] mt-[30px] ml-[10px] sm:ml-[15px] w-[40px] sm:w-[70px] bg-yellow-400"></motion.p>
+                        className={`h-[2px] mt-[30px] ${isArabic ? "mr-[10px] sm:mr-[15px]" : "ml-[10px] sm:ml-[15px]"} w-[40px] sm:w-[70px] bg-yellow-400`}
+                        ></motion.p>
 
                     </div>
 
@@ -220,11 +222,11 @@ const About = () => {
                     <motion.button
                     initial={{opacity:0, y:70}}
                     whileInView={{opacity:1, y:0}}
-                      viewport={{ once: true }}
-
+                    viewport={{ once: true }}
                     transition={{duration:0.8,
                         ease:"easeOut"
                     }}
+                    onClick={() => navigate("/BookNow")}
                         className="
                         absolute
                         top-[55%]
@@ -245,7 +247,7 @@ const About = () => {
                         sm:text-base
                         "
                     >
-                        Schedule Your Pickup
+                        {t("aboutPage.hero.button")}
                     </motion.button>
 
                 </div>
@@ -253,7 +255,6 @@ const About = () => {
             </section>
 
 
-            {/* WHY CHOOSE AKOYA */}
             <section className="min-h-[440px] h-auto py-[30px]">
 
                 <p
@@ -264,7 +265,7 @@ const About = () => {
                     text-center
                     "
                 >
-                    Why Choose <span className="text-yellow-400">Akoya</span>
+                    {t("aboutPage.choose.title")} <span className="text-yellow-400">Akoya</span>
                 </p>
 
 
@@ -284,12 +285,10 @@ const About = () => {
 
                         <motion.div
                         initial={{opacity:0, y:70}}
-                         whileInView={{opacity:1, y:0}}
-                           viewport={{ once: true }}
-
+                        whileInView={{opacity:1, y:0}}
+                        viewport={{ once: true }}
                         transition={{duration:0.8,
-                                  delay: index * 0.1,
-
+                            delay: index * 0.1,
                             ease:"easeOUt"
                         }}
                             key={index}
@@ -323,16 +322,14 @@ const About = () => {
             </section>
 
 
-            {/* SERVICE JOURNEY */}
             <section
-                className="
+                className={`
                 bg-[#f8f5f2]
                 min-h-[670px]
                 h-auto
-                w-[94%]
-                ml-[3%]
+                w-full
                 py-[70px]
-                "
+                `}
             >
 
                 <div
@@ -343,7 +340,7 @@ const About = () => {
                     text-center
                     "
                 >
-                    Our Service Journey
+                    {t("aboutPage.journey.title")}
                 </div>
 
 
@@ -362,9 +359,8 @@ const About = () => {
 
                         <motion.div
                         initial={{opacity:0, y:50}}
-                         whileInView={{opacity:1, y:0}}
-                           viewport={{ once: true }}
-
+                        whileInView={{opacity:1, y:0}}
+                        viewport={{ once: true }}
                         transition={{duration:0.8,
                             ease:"easeOUt",
                             delay: index * 0.1
@@ -381,15 +377,15 @@ const About = () => {
                             "
                         >
 
-                            <p className="text-[#d4af37] text-[35px] mt-[20px] ml-[20px]">
+                            <p className={`text-[#d4af37] text-[35px] mt-[20px] ${isArabic ? "mr-[20px]" : "ml-[20px]"}`}>
                                 {item.icon}
                             </p>
 
-                            <p className="font-bold ml-[55px] mt-[10px]">
+                            <p className={`font-bold mt-[10px] ${isArabic ? "mr-[55px]" : "ml-[55px]"}`}>
                                 {item.title}
                             </p>
 
-                            <p className="ml-[14px] font-light p-[3px] text-center mt-[10px] pr-[20px]">
+                            <p className={`font-light p-[3px] text-center mt-[10px] ${isArabic ? "mr-[14px] pl-[20px]" : "ml-[14px] pr-[20px]"}`}>
                                 {item.des}
                             </p>
 
@@ -402,8 +398,7 @@ const About = () => {
             </section>
 
 
-            {/* SPECIALISTS */}
-            <section className="min-h-[600px] h-auto py-[70px]">
+            <section className={`min-h-[600px] h-auto py-[70px] ${isArabic ? "mr-[-3px]" : "ml-[-3px]"}`}>
 
                 <p
                     className="
@@ -413,7 +408,7 @@ const About = () => {
                     text-center
                     "
                 >
-                    Meet Our Fabric Specialists
+                    {t("aboutPage.specialists.title")}
                 </p>
 
 
@@ -421,9 +416,9 @@ const About = () => {
 
 
                 <p className="text-center mt-[30px] px-5">
-                    Our team of garment care experts brings decades of combined experience in handling luxury
+                    {t("aboutPage.specialists.description")}
                     <br className="hidden sm:block" />
-                    fabrics
+                    {t("aboutPage.specialists.descriptionSecond")}
                 </p>
 
 
@@ -443,9 +438,8 @@ const About = () => {
 
                         <motion.div
                         initial={{opacity:0, y:50}}
-                         whileInView={{opacity:1, y:0}}
-                           viewport={{ once: true }}
-
+                        whileInView={{opacity:1, y:0}}
+                        viewport={{ once: true }}
                         transition={{duration:0.8,
                             ease:"easeOut",
                             delay: index * 0.1
@@ -500,4 +494,4 @@ const About = () => {
     )
 }
 
-export default About
+export default About;

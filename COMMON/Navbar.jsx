@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import logo from "../src/assets/logo.png";
 import { useTranslation } from "react-i18next";
@@ -15,15 +16,25 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [page, setPage] = useState("navbar");
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
-const changeLanguage = () => {
-  const newLanguage = i18n.language === "en" ? "ar" : "en";
-  i18n.changeLanguage(newLanguage);
+  const isArabic = i18n.language === "ar";
 
-  document.documentElement.dir = newLanguage === "ar" ? "rtl" : "ltr";
-  document.documentElement.lang = newLanguage;
-};
+  const changeLanguage = () => {
+    const newLanguage = i18n.language === "en" ? "ar" : "en";
+
+    localStorage.setItem("language", newLanguage);
+
+    i18n.changeLanguage(newLanguage);
+
+    document.documentElement.dir = newLanguage === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = newLanguage;
+  };
+
+  useEffect(() => {
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+    document.documentElement.lang = isArabic ? "ar" : "en";
+  }, [isArabic]);
 
   useEffect(() => {
     if (page !== "navbar") {
@@ -64,20 +75,22 @@ const changeLanguage = () => {
   const [ForgotEmailError, setForgotEmailError] = useState("");
 
   return (
-    <div>
+    <div dir={isArabic ? "rtl" : "ltr"}>
 
       {page === "navbar" && (
         <nav
           className="flex justify-around items-center backdrop-blur-md text-white
-          h-[65px] w-[94%] ml-[50px] mx-auto fixed top-0 left-0 right-0 z-50
+          h-[65px] w-full fixed top-0 left-0 right-0 z-50
           bg-black/20 backdrop-blur-md shadow-lg"
         >
 
-          <img
-            src={logo}
-            alt="companylogo"
-            className="h-[38px] w-[90px]"
-          />
+  <Link to="/">
+  <img
+    src={logo}
+    alt="companylogo"
+    className="h-[38px] w-[90px] cursor-pointer"
+  />
+</Link>
 
           <div className="hidden lg:flex gap-9 text-xs font-medium">
 
@@ -85,77 +98,70 @@ const changeLanguage = () => {
               to="/"
               className="hover:scale-110 transition duration-300"
             >
-              HOME
+              {t("home").toUpperCase()}
             </Link>
 
             <Link
               to="/Service"
               className="hover:scale-110 transition duration-300"
             >
-              SERVICES
+              {t("services").toUpperCase()}
             </Link>
 
             <Link
               to="/About"
               className="hover:scale-110 transition duration-300"
             >
-              ABOUT
+              {t("about").toUpperCase()}
             </Link>
 
             <Link
               to="/Vission"
               className="hover:scale-110 transition duration-300"
             >
-              VISION & MISSION
+              {t("visionMission").toUpperCase()}
             </Link>
 
             <Link
               to="/Contact"
               className="hover:scale-110 transition duration-300"
             >
-              CONTACT
+              {t("contact").toUpperCase()}
             </Link>
 
           </div>
 
-
           <div className="hidden lg:flex gap-4">
 
             <button
-  onClick={changeLanguage}
-  className="h-[38px] w-[75px] border-2 border-[#d4af37]
-  rounded-3xl text-white hover:scale-110 transition duration-300"
->
-  {i18n.language === "en" ? "العربية" : "English"}
-</button>
-
-
+              onClick={changeLanguage}
+              className="h-[38px] w-[80px] border-2 border-[#d4af37]
+              rounded-3xl text-white hover:scale-110 transition duration-300"
+            >
+              {i18n.language === "en" ? "العربية" : "English"}
+            </button>
 
             <button
-              className="h-[38px] w-[95px] border-2 border-[#d4af37]
+              className="h-[40px] w-[140px] border-2 border-[#d4af37]
               rounded-3xl hover:scale-110 transition duration-300
-              text-white text-xs font-medium"
+              text-white text-xs font-medium whitespace-nowrap"
               onClick={() => {
                 setmenueOpen(false);
                 setPage("login");
               }}
             >
-              Client Login
+              {t("clientLogin")}
             </button>
 
-
-<Link to={"/BookNow"}>
-            <button 
-
-              className="h-[38px] w-[95px] border-2 border-[#d4af37]
-              hover:scale-110 transition duration-300 rounded-3xl
-              font-medium text-sm bg-[#d4af37]"
-            >
-              Book Now
-            </button>
-
-
-</Link>
+            <Link to={"/BookNow"}>
+              <button
+                className="h-[38px] w-[95px] border-2 border-[#d4af37]
+                hover:scale-110 transition duration-300 rounded-3xl
+                font-medium text-sm bg-[#d4af37]"
+              >
+                {t("bookNow")}
+              </button>
+            </Link>
 
           </div>
 
@@ -196,7 +202,7 @@ const changeLanguage = () => {
               </div>
 
               <h1 className="text-center text-sm pt-[10px]">
-                Sign in to your account
+                {t("signInToAccount")}
               </h1>
 
             </div>
@@ -206,14 +212,14 @@ const changeLanguage = () => {
               <label
                 className="text-[#26354d] font-semibold text-sm"
               >
-                Email Address
+                {t("emailAddress")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaEnvelope
-                  className="absolute left-[15px] top-[16px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[15px]" : "left-[15px]"} top-[16px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -224,9 +230,9 @@ const changeLanguage = () => {
                     setLoginEmailError("");
                   }}
                   placeholder="your@email.com"
-                  className="h-[52px] w-full border border-gray-300
-                  rounded-lg pl-[52px] pr-[15px] outline-none
-                  focus:border-[#d4af37] focus:border-2"
+                  className={`h-[52px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[52px] pl-[15px]" : "pl-[52px] pr-[15px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2`}
                 />
 
               </div>
@@ -241,14 +247,14 @@ const changeLanguage = () => {
                 className="text-[#26354d] font-semibold text-sm
                 block mt-[20px]"
               >
-                Password
+                {t("password")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaLock
-                  className="absolute left-[16px] top-[16px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[16px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -259,16 +265,16 @@ const changeLanguage = () => {
                     setLoginPassword(e.target.value);
                     setLoginPasswordError("");
                   }}
-                  className="h-[52px] w-full border border-gray-300
-                  rounded-lg pl-[52px] pr-[50px] outline-none
-                  focus:border-[#d4af37] focus:border-2"
+                  className={`h-[52px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[52px] pl-[50px]" : "pl-[52px] pr-[50px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2`}
                 />
 
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-[15px] top-[16px]
-                  text-gray-500"
+                  className={`absolute ${isArabic ? "left-[15px]" : "right-[15px]"} top-[16px]
+                  text-gray-500`}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -295,7 +301,7 @@ const changeLanguage = () => {
                     className="h-[17px] w-[17px]"
                   />
 
-                  Remember me
+                  {t("rememberMe")}
 
                 </label>
 
@@ -308,7 +314,7 @@ const changeLanguage = () => {
                   className="text-[#d4af37] font-medium text-sm
                   hover:underline"
                 >
-                  Forgot password?
+                  {t("forgotPassword")}
                 </button>
 
               </div>
@@ -320,13 +326,13 @@ const changeLanguage = () => {
                   setLoginPasswordError("");
 
                   if (LoginEmail === "") {
-                    setLoginEmailError("Email is required");
+                    setLoginEmailError(t("emailRequired"));
                   }
                   else if (LoginPassword === "") {
-                    setLoginPasswordError("Password is required");
+                    setLoginPasswordError(t("passwordRequired"));
                   }
                   else {
-                    alert("Login Successfully");
+                    alert(t("loginSuccessfully"));
                   }
 
                 }}
@@ -334,7 +340,7 @@ const changeLanguage = () => {
                 rounded-lg text-white mt-[22px]
                 hover:scale-[1.01] transition duration-300"
               >
-                Sign in
+                {t("signIn")}
               </button>
 
               <div className="flex items-center gap-3 mt-[22px]">
@@ -344,7 +350,7 @@ const changeLanguage = () => {
                 <p
                   className="text-gray-500 text-sm whitespace-nowrap"
                 >
-                  New to AKOYA?
+                  {t("newToAkoya")}
                 </p>
 
                 <hr className="flex-1 border-gray-300" />
@@ -356,7 +362,7 @@ const changeLanguage = () => {
                 className="block w-full text-center text-[#d4af37]
                 mt-[17px] font-medium hover:underline"
               >
-                Create your account
+                {t("createYourAccount")}
               </button>
 
             </div>
@@ -397,7 +403,7 @@ const changeLanguage = () => {
                 className="text-center text-[15px] pt-[14px]
                 text-gray-200"
               >
-                Reset your password
+                {t("resetYourPassword")}
               </p>
 
             </div>
@@ -407,14 +413,14 @@ const changeLanguage = () => {
               <label
                 className="text-[#26354d] font-semibold text-[15px]"
               >
-                Email Address
+                {t("emailAddress")}
               </label>
 
               <div className="relative mt-[7px]">
 
                 <FaEnvelope
-                  className="absolute left-[17px] top-[18px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[17px]" : "left-[17px]"} top-[18px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -425,9 +431,9 @@ const changeLanguage = () => {
                     setForgotEmailError("");
                   }}
                   placeholder="your@email.com"
-                  className="h-[58px] w-full border border-gray-300
-                  rounded-lg pl-[52px] pr-[15px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[15px]"
+                  className={`h-[58px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[52px] pl-[15px]" : "pl-[52px] pr-[15px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[15px]`}
                 />
 
               </div>
@@ -444,10 +450,10 @@ const changeLanguage = () => {
                   setForgotEmailError("");
 
                   if (ForgotEmail === "") {
-                    setForgotEmailError("Email is required");
+                    setForgotEmailError(t("emailRequired"));
                   }
                   else {
-                    alert("Check your inbox");
+                    alert(t("checkYourInbox"));
                   }
 
                 }}
@@ -456,7 +462,7 @@ const changeLanguage = () => {
                 hover:scale-[1.01] transition duration-300
                 font-medium"
               >
-                Send Code
+                {t("sendCode")}
               </button>
 
               <p
@@ -464,14 +470,14 @@ const changeLanguage = () => {
                 mt-[24px]"
               >
 
-                Remember your password?{" "}
+                {t("rememberYourPassword")}{" "}
 
                 <button
                   onClick={() => setPage("login")}
                   className="text-[#d4af37] font-medium
                   hover:underline"
                 >
-                  Sign in
+                  {t("signIn")}
                 </button>
 
               </p>
@@ -514,7 +520,7 @@ const changeLanguage = () => {
                 className="text-center text-[14px] pt-[10px]
                 text-gray-200"
               >
-                Create your premium account
+                {t("createPremiumAccount")}
               </p>
 
             </div>
@@ -524,14 +530,14 @@ const changeLanguage = () => {
               <label
                 className="text-[#26354d] font-semibold text-[14px]"
               >
-                Full Name
+                {t("fullName")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaUser
-                  className="absolute left-[16px] top-[15px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[15px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -541,10 +547,10 @@ const changeLanguage = () => {
                     setFullName(e.target.value);
                     setFullNameError("");
                   }}
-                  placeholder="Enter your full name"
-                  className="h-[48px] w-full border border-gray-300
-                  rounded-lg pl-[50px] pr-[15px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[14px]"
+                  placeholder={t("enterYourFullName")}
+                  className={`h-[48px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[50px] pl-[15px]" : "pl-[50px] pr-[15px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[14px]`}
                 />
 
               </div>
@@ -559,14 +565,14 @@ const changeLanguage = () => {
                 className="text-[#26354d] font-semibold text-[14px]
                 block mt-[12px]"
               >
-                Email Address
+                {t("emailAddress")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaEnvelope
-                  className="absolute left-[16px] top-[15px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[15px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -577,9 +583,9 @@ const changeLanguage = () => {
                     setEmailError("");
                   }}
                   placeholder="your@email.com"
-                  className="h-[48px] w-full border border-gray-300
-                  rounded-lg pl-[50px] pr-[15px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[14px]"
+                  className={`h-[48px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[50px] pl-[15px]" : "pl-[50px] pr-[15px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[14px]`}
                 />
 
               </div>
@@ -594,14 +600,14 @@ const changeLanguage = () => {
                 className="text-[#26354d] font-semibold text-[14px]
                 block mt-[12px]"
               >
-                Password
+                {t("password")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaLock
-                  className="absolute left-[16px] top-[15px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[15px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -612,9 +618,9 @@ const changeLanguage = () => {
                     setPasswordError("");
                   }}
                   placeholder="••••••••"
-                  className="h-[48px] w-full border border-gray-300
-                  rounded-lg pl-[50px] pr-[50px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[14px]"
+                  className={`h-[48px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[50px] pl-[50px]" : "pl-[50px] pr-[50px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[14px]`}
                 />
 
                 <button
@@ -622,8 +628,8 @@ const changeLanguage = () => {
                   onClick={() =>
                     setShowSignupPassword(!showSignupPassword)
                   }
-                  className="absolute right-[16px] top-[15px]
-                  text-gray-500"
+                  className={`absolute ${isArabic ? "left-[16px]" : "right-[16px]"} top-[15px]
+                  text-gray-500`}
                 >
                   {showSignupPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -640,14 +646,14 @@ const changeLanguage = () => {
                 className="text-[#26354d] font-semibold text-[14px]
                 block mt-[12px]"
               >
-                Confirm Password
+                {t("confirmPassword")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaCheck
-                  className="absolute left-[16px] top-[15px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[15px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -658,9 +664,9 @@ const changeLanguage = () => {
                     setConfirmPasswordError("");
                   }}
                   placeholder="••••••••"
-                  className="h-[48px] w-full border border-gray-300
-                  rounded-lg pl-[50px] pr-[50px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[14px]"
+                  className={`h-[48px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[50px] pl-[50px]" : "pl-[50px] pr-[50px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[14px]`}
                 />
 
                 <button
@@ -668,8 +674,8 @@ const changeLanguage = () => {
                   onClick={() =>
                     setShowConfirmPassword(!showConfirmPassword)
                   }
-                  className="absolute right-[16px] top-[15px]
-                  text-gray-500"
+                  className={`absolute ${isArabic ? "left-[16px]" : "right-[16px]"} top-[15px]
+                  text-gray-500`}
                 >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -686,14 +692,14 @@ const changeLanguage = () => {
                 className="text-[#26354d] font-semibold text-[14px]
                 block mt-[12px]"
               >
-                WhatsApp Phone Number
+                {t("whatsappPhoneNumber")}
               </label>
 
               <div className="relative mt-[5px]">
 
                 <FaPhone
-                  className="absolute left-[16px] top-[15px]
-                  text-gray-400"
+                  className={`absolute ${isArabic ? "right-[16px]" : "left-[16px]"} top-[15px]
+                  text-gray-400`}
                 />
 
                 <input
@@ -704,9 +710,9 @@ const changeLanguage = () => {
                     setPhoneError("");
                   }}
                   placeholder="+1234567890"
-                  className="h-[48px] w-full border border-gray-300
-                  rounded-lg pl-[50px] pr-[15px] outline-none
-                  focus:border-[#d4af37] focus:border-2 text-[14px]"
+                  className={`h-[48px] w-full border border-gray-300
+                  rounded-lg ${isArabic ? "pr-[50px] pl-[15px]" : "pl-[50px] pr-[15px]"} outline-none
+                  focus:border-[#d4af37] focus:border-2 text-[14px]`}
                 />
 
               </div>
@@ -718,8 +724,7 @@ const changeLanguage = () => {
               )}
 
               <p className="text-gray-500 text-[11px] mt-[3px]">
-                Enter your full WhatsApp number with country code
-                (e.g., +1234567890)
+                {t("enterFullWhatsApp")}
               </p>
 
               <label
@@ -738,7 +743,7 @@ const changeLanguage = () => {
                     href="#"
                     className="text-[#d4af37] hover:underline"
                   >
-                    terms and conditions
+                    {t("termsAndConditions")}
                   </a>
                 </span>
 
@@ -754,31 +759,31 @@ const changeLanguage = () => {
                   setPhoneError("");
 
                   if (FullName === "") {
-                    setFullNameError("Full name is required");
+                    setFullNameError(t("fullNameRequired"));
                   }
                   else if (Email === "") {
-                    setEmailError("Email is required");
+                    setEmailError(t("emailRequired"));
                   }
                   else if (Password === "") {
-                    setPasswordError("Password is required");
+                    setPasswordError(t("passwordRequired"));
                   }
                   else if (ConfirmPassword === "") {
                     setConfirmPasswordError(
-                      "Confirm password is required"
+                      t("confirmPasswordRequired")
                     );
                   }
                   else if (Password !== ConfirmPassword) {
                     setConfirmPasswordError(
-                      "Passwords do not match"
+                      t("passwordsDoNotMatch")
                     );
                   }
                   else if (Phone === "") {
                     setPhoneError(
-                      "WhatsApp number is required"
+                      t("whatsappRequired")
                     );
                   }
                   else {
-                    alert("Account Created Successfully");
+                    alert(t("accountCreatedSuccessfully"));
                   }
 
                 }}
@@ -787,21 +792,21 @@ const changeLanguage = () => {
                 hover:scale-[1.01] transition duration-300
                 font-medium"
               >
-                Create Account
+                {t("createAccount")}
               </button>
 
               <p
                 className="text-center text-gray-500 text-[13px]
                 mt-[15px]"
               >
-                Already have an account?{" "}
+                {t("alreadyHaveAccount")}{" "}
 
                 <button
                   onClick={() => setPage("login")}
                   className="text-[#d4af37] font-medium
                   hover:underline"
                 >
-                  Sign in
+                  {t("signIn")}
                 </button>
 
               </p>
@@ -818,3 +823,4 @@ const changeLanguage = () => {
 };
 
 export default Navbar;
+

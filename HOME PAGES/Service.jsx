@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -35,6 +37,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "motion/react";
 
 const Service = () => {
+  const { t } = useTranslation();
+
   const [Selected, setSelected] = useState(0);
 
   const services = [
@@ -61,24 +65,21 @@ const Service = () => {
           price: "10 QAR",
           image: dress,
           emoji: "👗",
-          description:
-            "Care for cocktail and summer dresses",
+          description: "Care for cocktail and summer dresses",
         },
         {
           name: "Dress (Long)",
           price: "15 QAR",
           image: dressLong,
           emoji: "👗",
-          description:
-            "Specialized care for evening gowns",
+          description: "Specialized care for evening gowns",
         },
         {
           name: "Overcoat",
           price: "11 QAR",
           image: overcoat,
           emoji: "👗",
-          description:
-            "Winter coat cleaning and preservation",
+          description: "Winter coat cleaning and preservation",
         },
       ],
     },
@@ -113,24 +114,21 @@ const Service = () => {
           price: "9 QAR",
           image: military_suite,
           emoji: "🧥",
-          description:
-            "Regimental standard cleaning and pressing",
+          description: "Regimental standard cleaning and pressing",
         },
         {
           name: "Blouse (Special)",
           price: "4 QAR",
           image: blouse,
           emoji: "🧥",
-          description:
-            "Delicate care for embellished tops",
+          description: "Delicate care for embellished tops",
         },
         {
           name: "Bath Robe",
           price: "4 QAR",
           image: bathrob,
           emoji: "🧥",
-          description:
-            "Deep cleaning for plush bathrobes",
+          description: "Deep cleaning for plush bathrobes",
         },
       ],
     },
@@ -167,24 +165,21 @@ const Service = () => {
           price: " 3 QAR",
           image: ghutra,
           emoji: "👗",
-          description:
-            "Gentle cleaning for traditional headwear",
+          description: "Gentle cleaning for traditional headwear",
         },
         {
           name: "Kurta",
           price: "4 QAR",
           image: kurta,
           emoji: "🧥",
-          description:
-            "Care for traditional South Asian tunic",
+          description: "Care for traditional South Asian tunic",
         },
         {
           name: "Kurta Pyjama (Set)",
           price: "6 QAR",
           image: kurtaPajama,
           emoji: "👕",
-          description:
-            "Complete set cleaning for traditional attire",
+          description: "Complete set cleaning for traditional attire",
         },
         {
           name: "Kameez",
@@ -298,12 +293,12 @@ const Service = () => {
             <div className="relative">
 
               <img
-                className="relative w-[94%] ml-[50px] h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
+                className="relative w-full h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
                 src={image1}
                 alt=""
               />
 
-              <div className="absolute top-0 left-[50px] bg-black/45 h-[600px] w-[94%] max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
+              <div className="absolute top-0 left-0 bg-black/45 h-[600px] w-full max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
 
               <motion.p
                 initial={{ opacity: 0, y: 50 }}
@@ -314,7 +309,7 @@ const Service = () => {
                 }}
                 className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
               >
-                Premium Garment Care
+                {t("servicePage.hero.slide1.title")}
               </motion.p>
 
               <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
@@ -338,7 +333,7 @@ const Service = () => {
                   }}
                   className="text-yellow-400 mt-[30px]"
                 >
-                  Experience the Akoya difference
+                  {t("servicePage.hero.slide1.subtitle")}
                 </motion.p>
 
                 <motion.p
@@ -353,17 +348,19 @@ const Service = () => {
 
               </div>
 
-              <motion.button
-                initial={{ opacity: 0, y: 70 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                }}
-                className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
-              >
-                Book a Collection
-              </motion.button>
+              <Link to="/BookNow">
+                <motion.button
+                  initial={{ opacity: 0, y: 70 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                  }}
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                >
+                  {t("servicePage.bookCollection")}
+                </motion.button>
+              </Link>
 
             </div>
           </SwiperSlide>
@@ -374,12 +371,12 @@ const Service = () => {
             <div className="relative">
 
               <img
-                className="relative w-[94%] ml-[50px] h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
+                className="relative w-full h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
                 src={fabric1}
                 alt=""
               />
 
-              <div className="absolute top-0 left-[50px] bg-black/45 h-[600px] w-[94%] max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
+              <div className="absolute top-0 left-0 bg-black/45 h-[600px] w-full max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
 
               <motion.p
                 initial={{ opacity: 0, y: 50 }}
@@ -390,7 +387,7 @@ const Service = () => {
                 }}
                 className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
               >
-                Precision Fabric Care
+                {t("servicePage.hero.slide2.title")}
               </motion.p>
 
               <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
@@ -414,7 +411,7 @@ const Service = () => {
                   }}
                   className="text-yellow-400 mt-[30px]"
                 >
-                  Tailored to your garment's needs
+                  {t("servicePage.hero.slide2.subtitle")}
                 </motion.p>
 
                 <motion.p
@@ -429,17 +426,19 @@ const Service = () => {
 
               </div>
 
-              <motion.button
-                initial={{ opacity: 0, y: 70 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                }}
-                className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
-              >
-                Book a Collection
-              </motion.button>
+              <Link to="/BookNow">
+                <motion.button
+                  initial={{ opacity: 0, y: 70 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                  }}
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                >
+                  {t("servicePage.bookCollection")}
+                </motion.button>
+              </Link>
 
             </div>
           </SwiperSlide>
@@ -450,12 +449,12 @@ const Service = () => {
             <div className="relative">
 
               <img
-                className="relative w-[94%] ml-[50px] h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
+                className="relative w-full h-[600px] max-md:w-full max-md:ml-0 max-md:h-[500px] max-sm:h-[400px] object-cover"
                 src={premium1}
                 alt=""
               />
 
-              <div className="absolute top-0 left-[50px] bg-black/45 h-[600px] w-[94%] max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
+              <div className="absolute top-0 left-0 bg-black/45 h-[600px] w-full max-md:left-0 max-md:w-full max-md:h-[500px] max-sm:h-[400px]"></div>
 
               <motion.p
                 initial={{ opacity: 0, y: 50 }}
@@ -466,7 +465,7 @@ const Service = () => {
                 }}
                 className="absolute top-[30%] left-1/2 -translate-x-1/2 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap max-sm:text-2xl"
               >
-                Luxury Laundry Services
+                {t("servicePage.hero.slide3.title")}
               </motion.p>
 
               <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-white text-sm sm:text-lg md:text-xl flex justify-center items-center whitespace-nowrap">
@@ -490,7 +489,7 @@ const Service = () => {
                   }}
                   className="text-yellow-400 mt-[30px]"
                 >
-                  For the most discerning clients
+                  {t("servicePage.hero.slide3.subtitle")}
                 </motion.p>
 
                 <motion.p
@@ -505,17 +504,19 @@ const Service = () => {
 
               </div>
 
-              <motion.button
-                initial={{ opacity: 0, y: 70 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                }}
-                className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
-              >
-                Book a Collection
-              </motion.button>
+              <Link to="/BookNow">
+                <motion.button
+                  initial={{ opacity: 0, y: 70 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                  }}
+                  className="absolute top-[55%] left-1/2 -translate-x-1/2 h-[50px] w-[200px] sm:w-[230px] font-bold bg-yellow-400 rounded-4xl hover:bg-yellow-500 hover:scale-[1.03] transition-transform ease-out duration-400 text-sm sm:text-base"
+                >
+                  {t("servicePage.bookCollection")}
+                </motion.button>
+              </Link>
 
             </div>
           </SwiperSlide>
@@ -525,12 +526,12 @@ const Service = () => {
 
       {/* ================= OUR SERVICES ================= */}
 
-      <section className="bg-[#F8F5F2] w-[94%] ml-[50px] max-md:w-full max-md:ml-0 min-h-[700px] pb-[80px]">
+      <section className="bg-[#F8F5F2] w-full max-md:w-full max-md:ml-0 min-h-[700px] pb-[80px]">
 
         {/* ================= HEADING ================= */}
 
         <p className="pt-[100px] text-3xl text-center pb-[20px]">
-          Our Services
+          {t("servicePage.ourServices")}
         </p>
 
         <div className="flex justify-center gap-4 max-sm:gap-2">
@@ -538,7 +539,7 @@ const Service = () => {
           <p className="bg-yellow-500 h-[2px] w-[70px] mt-[13px] max-sm:w-[35px]"></p>
 
           <p className="font-bold text-yellow-500">
-            LUXURY GARMENT CARE
+            {t("servicePage.luxuryGarmentCare")}
           </p>
 
           <p className="bg-yellow-500 h-[2px] w-[70px] mt-[13px] max-sm:w-[35px]"></p>
@@ -559,7 +560,7 @@ const Service = () => {
                   : ""
               }`}
             >
-              {category}
+              {t(`servicePage.categories.${category}`)}
             </button>
           ))}
 
@@ -568,8 +569,6 @@ const Service = () => {
         {/* ================= SERVICES CARDS ================= */}
 
         <div className="w-full mt-[50px] px-[25px] mr-[30px]">
-
-          {/* CARD SIZE UPDATED HERE */}
 
           <div className="max-w-[1340px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[35px]">
 
@@ -626,17 +625,17 @@ const Service = () => {
                   <div className="flex justify-between items-center gap-3">
 
                     <h3 className="text-[22px] font-medium text-black">
-                      {product.name}
+                      {t(`servicePage.products.${product.name}.name`)}
                     </h3>
 
                     <p className="text-[#d4af37] text-[17px] font-medium whitespace-nowrap">
-                      From {product.price}
+                      {t("servicePage.from")} {product.price}
                     </p>
 
                   </div>
 
                   <p className="text-[16px] text-gray-700 leading-[1.6] mt-[15px] min-h-[55px]">
-                    {product.description}
+                    {t(`servicePage.products.${product.name}.description`)}
                   </p>
 
                   {/* ================= YELLOW ANIMATED LINE ================= */}
@@ -664,12 +663,14 @@ const Service = () => {
 
                   {/* ================= ORDER BUTTON ================= */}
 
-                  <button className="w-full h-[48px] mt-[18px] bg-[#d4af37] text-black rounded-[9px] text-[16px] font-medium hover:bg-black hover:text-yellow-400 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-[8px]">
-                    Order
-                    <span className="text-[22px]">
-                      ＋
-                    </span>
-                  </button>
+                  <Link to="/BookNow">
+                    <button className="w-full h-[48px] mt-[18px] bg-[#d4af37] text-black rounded-[9px] text-[16px] font-medium hover:bg-black hover:text-yellow-400 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-[8px]">
+                      {t("servicePage.order")}
+                      <span className="text-[22px]">
+                        ＋
+                      </span>
+                    </button>
+                  </Link>
 
                 </div>
 
@@ -681,82 +682,85 @@ const Service = () => {
 
         </div>
 
-
       </section>
 
       <div>
+
         {/* ================= PERSONALIZED SERVICE SECTION ================= */}
 
-<section className="w-[94%] ml-[50px] border-b-2 border-b-white max-md:w-full max-md:ml-0 bg-[#1c1c1c] min-h-[350px] flex items-center justify-center overflow-hidden">
+        <section className="w-full border-b-2 border-b-white max-md:w-full max-md:ml-0 bg-[#1c1c1c] min-h-[350px] flex items-center justify-center overflow-hidden">
 
-  <div className="w-full text-center px-[30px] py-[80px]">
+          <div className="w-full text-center px-[30px] py-[80px]">
 
-    {/* Heading */}
-    <motion.h2
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.7,
-        ease: "easeOut",
-      }}
-      className="text-[#d4af37] text-3xl md:text-4xl font-light"
-    >
-      Need Personalized Service?
-    </motion.h2>
+            {/* Heading */}
 
-    {/* Paragraph */}
-    <motion.p
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.7,
-        delay: 0.15,
-        ease: "easeOut",
-      }}
-      className="text-white/90 text-base md:text-lg mt-[25px] max-w-[1050px] mx-auto leading-[1.8]"
-    >
-      Our VIP concierge team is available 24/7 to handle special requests,
-      delicate items, or bulk orders for businesses and residences.
-    </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
+              className="text-[#d4af37] text-3xl md:text-4xl font-light"
+            >
+              {t("servicePage.personalizedService.title")}
+            </motion.h2>
 
-    {/* Button */}
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.7,
-        delay: 0.3,
-        ease: "easeOut",
-      }}
-      className="mt-[30px]"
-    >
-      <button
-        className="
-          h-[52px]
-          w-[240px]
-          bg-[#d4af37]
-          text-black
-          rounded-full
-          text-[16px]
-          font-medium
-          transition-all
-          duration-300
-          ease-out
-          hover:scale-[1.04]
-          hover:bg-[#e2bf45]
-        "
-      >
-        Contact Concierge
-        <span className="ml-[8px] text-[18px]">💬</span>
-      </button>
-    </motion.div>
+            {/* Paragraph */}
 
-  </div>
+            <motion.p
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.15,
+                ease: "easeOut",
+              }}
+              className="text-white/90 text-base md:text-lg mt-[25px] max-w-[1050px] mx-auto leading-[1.8]"
+            >
+              {t("servicePage.personalizedService.description")}
+            </motion.p>
 
-</section>
+            {/* Button */}
+
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.3,
+                ease: "easeOut",
+              }}
+              className="mt-[30px]"
+            >
+              <button
+                className="
+                  h-[52px]
+                  w-[240px]
+                  bg-[#d4af37]
+                  text-black
+                  rounded-full
+                  text-[16px]
+                  font-medium
+                  transition-all
+                  duration-300
+                  ease-out
+                  hover:scale-[1.04]
+                  hover:bg-[#e2bf45]
+                "
+              >
+                {t("servicePage.personalizedService.contactConcierge")}
+                <span className="ml-[8px] text-[18px]">💬</span>
+              </button>
+            </motion.div>
+
+          </div>
+
+        </section>
+
       </div>
     </div>
   );

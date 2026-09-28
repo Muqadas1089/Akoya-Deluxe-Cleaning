@@ -1,3 +1,4 @@
+
 import React from 'react';
 import logo from "../src/assets/logo.png";
 import { motion } from "motion/react";
@@ -16,7 +17,7 @@ const Footer = () => {
     const { t } = useTranslation();
     return (
         <div>
-            <section className='mt-0 h-[530px] w-[94%] ml-[50px] bg-black'>
+            <section className='mt-0 h-[530px] w-full bg-black'>
 
                 <div className='flex justify-center gap-[80px]'>
                     {/* LOGO / ABOUT */}
@@ -203,12 +204,8 @@ const Footer = () => {
                 <hr
                     className='text-yellow-300 mt-[50px]' />
 
-
-
-
                 <p
                     className='text-gray-500 ml-[100px] mt-[20px] text-xs '> © 2025 AKOYA Luxury Laundry. {t("allRightsReserved")}</p>
-
 
                 <div
                     className='flex justify-center items-center text-gray-500 gap-4 text-xs ml-[950px]' >
@@ -220,21 +217,16 @@ const Footer = () => {
                 <p
                     className='text-gray-500 ml-[40%] text-xs '>{t("poweredBy")} <span className='text-yellow-500'> Nerou Technology Services</span> </p>
 
-
             </section>
 
-
             <motion.div
-            initial={{opacity:0, y:100}}
-            animate={{opacity:1, y:0}}
-            transition={{duration:1}}
-            
+                initial={{opacity:0, y:100}}
+                animate={{opacity:1, y:0}}
+                transition={{duration:1}}
             ></motion.div>
-
 
         </div>
     )
 }
 
 export default Footer;
-

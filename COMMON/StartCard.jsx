@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaXmark } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 import ramadanImage from "../src/Pics/startbanner.webp";
 
 const WelcomePopup = () => {
+  const { t } = useTranslation();
+
   const [showPopup, setShowPopup] = useState(true);
   const [progress, setProgress] = useState(0);
 
@@ -164,7 +167,7 @@ const WelcomePopup = () => {
           }}
           className="text-center text-[#d4af37] text-[34px] font-bold mt-[35px] max-sm:text-[27px] max-sm:mt-[25px]"
         >
-          Welcome dear guests
+          {t("welcomeDearGuests")}
         </motion.h2>
 
 
@@ -185,11 +188,11 @@ const WelcomePopup = () => {
           }}
           className="text-center text-[#374151] text-[17px] leading-[1.7] px-[45px] mt-[15px] max-sm:text-[15px] max-sm:px-[25px]"
         >
-          We're delighted to have you visit AKOYA Premium Laundry.
+          {t("welcomeMessage1")}
           <br />
-          Experience our exceptional laundry and garment care
+          {t("welcomeMessage2")}
           <br className="max-sm:hidden" />
-          services
+          {t("welcomeMessage3")}
         </motion.p>
 
 
@@ -226,7 +229,7 @@ const WelcomePopup = () => {
           }}
           className="text-center text-[#64748b] text-[16px] mt-[17px] px-[20px] max-sm:text-[14px]"
         >
-          This message will close automatically in 10 seconds
+          {t("popupAutoClose")}
         </motion.p>
 
       </motion.div>
